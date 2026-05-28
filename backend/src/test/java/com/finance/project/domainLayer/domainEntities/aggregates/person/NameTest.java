@@ -1,4 +1,4 @@
-﻿package com.finance.project.domainLayer.domainEntities.aggregates.person;
+package com.finance.project.domainLayer.domainEntities.aggregates.person;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

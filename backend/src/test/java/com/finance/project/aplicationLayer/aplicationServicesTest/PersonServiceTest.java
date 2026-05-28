@@ -12,6 +12,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.Mockito.lenient;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -433,9 +434,7 @@ class PersonServiceTest {
         @Test
         @DisplayName("TC3 - getAccountID: campo cuenta vacío → NotFoundArgumentsBusinessException")
         void getAccountID_emptyField() {
-            // Arrange
-            when(personRepository.findById(personID))
-                    .thenReturn(Optional.of(realPerson));
+
 
             // Act & Assert
             assertThrows(NotFoundArgumentsBusinessException.class,
@@ -447,8 +446,6 @@ class PersonServiceTest {
         @DisplayName("TC4 - getAccountID: cuenta NO existe en repo → InvalidArgumentsBusinessException")
         void getAccountID_accountNotFound() {
             // Arrange
-            when(personRepository.findById(personID))
-                    .thenReturn(Optional.of(realPerson));
             when(accountRepository.existsById(any(AccountID.class)))
                     .thenReturn(false);
 
@@ -480,11 +477,6 @@ class PersonServiceTest {
             // Arrange
             when(personRepository.findById(personID))
                     .thenReturn(Optional.of(realPerson));
-            when(ledgerRepository.findById(ledgerID))
-                    .thenReturn(Optional.of(mockLedger));
-            List<Transaction> records = new ArrayList<>();
-            records.add(mock(Transaction.class));
-            when(mockLedger.getRecords()).thenReturn(records);
 
             // Act & Assert
             InvalidArgumentsBusinessException ex = assertThrows(

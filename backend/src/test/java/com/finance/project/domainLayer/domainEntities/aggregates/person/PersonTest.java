@@ -1,4 +1,4 @@
-﻿package com.finance.project.domainLayer.domainEntities.aggregates.person;
+package com.finance.project.domainLayer.domainEntities.aggregates.person;
 
 import com.finance.project.domainLayer.domainEntities.vosShared.AccountID;
 import com.finance.project.domainLayer.domainEntities.vosShared.CategoryID;
